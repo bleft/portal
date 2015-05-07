@@ -5,9 +5,28 @@
  * Date: 07/05/15
  * Time: 09:57
  */
-$user = $_POST["user"];
-$pw   = $_POST["password"];
+
+include_once "DBHandler.php";
+include_once "Mitglied.php";
 
 
-echo $user;
-echo $pw;
+
+ $user =  $_POST["user"];
+ $pw   =  $_POST["password"];
+
+
+if ($user == "" || $pw == ""){
+    header ("location: ../index.html");
+} else {
+    $handler = new DBHandler();
+    $member = $handler->login($user, $pw);
+    if ($member){
+        session_start();
+        $_SESSION["loggedIn"] = true;
+        $_SESSION["memberName"] = $member->name;
+        $_SESSION["memberID"] = $member->id;
+        header ("location: ../start.php");
+    } else {
+        header ("location: ../index.html");
+    }
+}
