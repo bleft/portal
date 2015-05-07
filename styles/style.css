@@ -1,0 +1,83 @@
+html {
+    font-family: 'Ubuntu', sans-serif;
+    font-size:20pt;
+
+}
+
+
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    background: darkgreen;
+}
+
+#loginbox {
+    position:absolute;
+    right:10px;
+    top:10px;
+    font-size:0.6em;
+    color:darkslategray;
+}
+
+#todobox{
+    position:absolute;
+    right:10px;
+    top:30px;
+    width:150px;
+}
+
+#contentbox {
+    font-size:0.6em;
+    min-height:300px;
+    width:100%;
+}
+
+#todoheader {
+    font-family: 'Kalam', cursive;
+    font-size:0.75em;
+    text-decoration:underline;
+    color:blue;
+}
+
+#todo {
+    font-family: 'Kalam', cursive;
+    font-size:0.6em;
+    color:blue;
+}
+
+#footer {
+    background-color: black;
+    width:100%;
+    height:100px;
+}
+
+#footerbox {
+    float: left;
+    width:100%;
+    text-align:center;
+    color:white;
+    padding:10px;
+    font-size:0.6em;
+    font-family: 'Kalam', cursive;
+}
+
+
+#welcomebox {
+    padding: 5px;
+    width: 200px;
+    height:150px;
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    background-color: darkslategrey;
+    color:white;
+    font-size: 0.6em;
+}
