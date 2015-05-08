@@ -93,3 +93,28 @@ a:hover {
     font-size: 0.6em;
     color: darkslategray;
 }
+
+#lankopf {
+    font-size: 0.6em;
+    padding: 10px;
+}
+
+#chatterbox {
+    font-size: 0.6em;
+    padding: 10px;
+    width: 70%;
+    min-height: 300px;
+    background-color: lightblue;
+}
+
+#chatentrykopf {
+    font-size: 0.8em;
+    font-family: 'Ubuntu', sans-serif;
+    color: darkslategray;
+    text-decoration: underline;
+}
+
+#chatentry {
+    padding: 10px;
+    font-family: 'Kalam', cursive;
+}

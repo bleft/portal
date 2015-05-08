@@ -16,9 +16,11 @@ class DataPrinter {
         /** @var $lan Lanpartie */
         $lan = $handler->aktiveLan();
         if (!$lan){
-            echo "Aktuell steht <span style='color: red; font-weight: 600'>keine</span> LAN an. <br>Das gibts doch nicht!<br>MACH WAS!!!";
+            echo "<div>Aktuell steht <span style='color: red; font-weight: 600'>keine</span> LAN an. <br>Das gibts doch nicht!<br>MACH WAS!!!</div>";
         } else {
-
+            echo '<div id="lankopf">';
+            echo "<img src='$lan->BANNERLINK' alt='LAN-BANNER' width='75%'>";
+            echo "<br/>";
             echo $lan->BEZEICHNER;
             echo " bei ";
             echo $lan->VERANSTALTER;
@@ -33,9 +35,8 @@ class DataPrinter {
             echo " ";
             echo "<a id='memberList' href='$lan->MAPLINK'>Landkarte</a>";
             echo "<br/>";
-            echo "<img src='$lan->BANNERLINK' alt='LAN-BANNER'>";
-            echo "<br/>";
             echo $lan->AKTIV;
+            echo "</div>";
         }
 
     }
