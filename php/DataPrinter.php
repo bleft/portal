@@ -33,7 +33,7 @@ class DataPrinter {
             echo " ";
             echo "<a id='memberList' href='$lan->MAPLINK'>Landkarte</a>";
             echo "<br/>";
-            echo "<img href='$lan->BANNERLINK' alt='LAN-BANNER'>";
+            echo "<img src='$lan->BANNERLINK' alt='LAN-BANNER'>";
             echo "<br/>";
             echo $lan->AKTIV;
         }
