@@ -19,7 +19,7 @@ class DataPrinter {
             echo "<div>Aktuell steht <span style='color: red; font-weight: 600'>keine</span> LAN an. <br>Das gibts doch nicht!<br>MACH WAS!!!</div>";
         } else {
             echo '<div id="lankopf">';
-            echo "<img src='$lan->BANNERLINK' alt='LAN-BANNER' width='75%'>";
+            echo "<img src='$lan->BANNERLINK' alt='LAN-BANNER' max-width='75%'>";
             echo "<br/>";
             echo $lan->BEZEICHNER;
             echo " bei ";
