@@ -1,7 +1,6 @@
 html {
     font-family: 'Ubuntu', sans-serif;
     font-size:20pt;
-
 }
 
 
@@ -23,21 +22,25 @@ a:hover {
     position:absolute;
     right:10px;
     top:10px;
-    font-size:0.6em;
     color:darkslategray;
-
+    font-size: 0.6em;
 }
 
+#headline {
+    font-size: 1em;
+    color: darkslategray;
+}
 
 #todobox{
     position:absolute;
     right:10px;
-    top:30px;
+    top:50px;
     width:150px;
 }
 
 #contentbox {
-    font-size:0.6em;
+    padding: 10px;
+    font-size: 1em;
     min-height:300px;
     width:100%;
 }
@@ -82,4 +85,11 @@ a:hover {
     background-color: darkslategrey;
     color:white;
     font-size: 0.6em;
+}
+
+
+#memberList {
+    padding: 10px;
+    font-size: 0.6em;
+    color: darkslategray;
 }

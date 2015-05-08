@@ -6,8 +6,8 @@
  * Time: 09:57
  */
 
-include_once "DBHandler.php";
-include_once "Mitglied.php";
+require_once "DBHandler.php";
+require_once "Mitglied.php";
 
 
 
