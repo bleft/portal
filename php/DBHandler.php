@@ -38,14 +38,12 @@ class DBHandler {
     * liefert class Mitglied oder false
     */
     public function login($user, $pw) {
-        $u = $this->mysqli->real_escape_string($user);
-        $p = $this->mysqli->real_escape_string($pw);
-        $query = "SELECT id, name, email FROM `MITGLIEDER` where name = '$u' AND password = '$p'";
-        $result = $this->mysqli->query($query, MYSQLI_STORE_RESULT);
-        if ($result->num_rows != 1){
-            return false;
-        } else {
-            $member = $result->fetch_object("Mitglied");
+        $stmt = $this->mysqli->prepare("SELECT id, name, email FROM `MITGLIEDER` where name = ? AND password = ?");
+        $stmt->bind_param("ss", $user, $pw);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($obj = $result->fetch_object("Mitglied")){
+            $member = $obj;
             return $member;
         }
     }
@@ -61,7 +59,7 @@ class DBHandler {
         return $members;
     }
 
-    public function laparties() {
+    public function lanparties() {
         $query = "SELECT * FROM LANPARTIES";
         $result = $this->mysqli->query($query);
         $lans = array();
