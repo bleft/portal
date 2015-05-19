@@ -1,0 +1,6 @@
+<FilesMatch "register.html">
+AuthType Basic
+AuthName "Weisste bescheid?"
+AuthUserFile password.htpasswd
+require valud-user
+</FilesMatch>

@@ -23,7 +23,7 @@ if ($user == "" || $pw == ""){
     if ($member){
         session_start();
         $_SESSION["loggedIn"] = true;
-        $_SESSION["memberName"] = $member->name;
+        $_SESSION["memberName"] = $member->USERNAME;
         $_SESSION["memberID"] = $member->id;
         header ("location: ../start.php");
     } else {

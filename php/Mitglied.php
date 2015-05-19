@@ -9,6 +9,7 @@
 class Mitglied {
 
     public $id;
-    public $name;
-    public $email;
+    public $USERNAME;
+    public $PASSWORT;
+    public $EMAIL;
 } 

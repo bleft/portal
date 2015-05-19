@@ -6,7 +6,7 @@
  * Time: 11:34
  */
 
-require_once "Config.example.php";
+require_once "Config.php";
 require_once "Mitglied.php";
 require_once "Lanpartie.php";
 
@@ -38,8 +38,9 @@ class DBHandler {
     * liefert class Mitglied oder false
     */
     public function login($user, $pw) {
-        $stmt = $this->mysqli->prepare("SELECT id, name, email FROM `MITGLIEDER` where name = ? AND password = ?");
-        $stmt->bind_param("ss", $user, $pw);
+        $md5pswd = md5($pw);
+        $stmt = $this->mysqli->prepare("SELECT id, USERNAME, EMAIL FROM `MITGLIEDER` where USERNAME = ? AND PASSWORD = ?");
+        $stmt->bind_param("ss", $user, $md5pswd);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($obj = $result->fetch_object("Mitglied")){
@@ -79,5 +80,15 @@ class DBHandler {
             return $lan;
         }
     }
+
+
+    public function registerUser($name, $pswd, $email){
+        $stmt = $this->mysqli->prepare("INSERT INTO `MITGLIEDER` (`USERNAME`, `PASSWORD`, `EMAIL`) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $name, $pswd, $email);
+        $stmt->execute();
+        return $stmt->errno;
+    }
+
+
 
 } 
