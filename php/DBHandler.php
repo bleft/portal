@@ -38,9 +38,8 @@ class DBHandler {
     * liefert class Mitglied oder false
     */
     public function login($user, $pw) {
-        $md5pswd = md5($pw);
         $stmt = $this->mysqli->prepare("SELECT id, USERNAME, EMAIL FROM `MITGLIEDER` where USERNAME = ? AND PASSWORD = ?");
-        $stmt->bind_param("ss", $user, $md5pswd);
+        $stmt->bind_param("ss", $user, $pw);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($obj = $result->fetch_object("Mitglied")){

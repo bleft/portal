@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title></title>
+    <title>St. Lan 2.0</title>
+    <script src='js/jquery-2.1.4.min.js'></script>
+    <script src='js/jquery.md5.min.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu|Kalam' rel='stylesheet' type='text/css'>
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script src="js/lg.js"></script>
 </head>
 <body>
     <div id="welcomebox">
         <div>Gehen Sie weiter, hier gibt es nichts zu sehen!</div>
         <div style="padding: 10px">
-            <form action="php/login.php" method="post">
-                Username:<br><input type="text" name="user"><br>
-                Passwort:<br><input type="password" name="password"><br>
-                <input type="submit" value="kumm rei">
-            </form>
+                <input id="input_name" placeholder="Username"><br>
+                <input id="input_password" type="password" placeholder="Passwort"><br>
+                <input id="input_login" type="button" value="kumm rei">
         </div>
+        <div><a href="register.html">noch nicht dabei?</a></div>
     </div>
-    <div><a href="register.html">Noch nicht dabei?</a></div>
 </body>
 </html>
