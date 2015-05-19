@@ -26,7 +26,6 @@ function login(name, pswd){
             window.open("start.html","_self");
         })
         .fail(function (err){
-            alert('Fehler aufgetreten');
             window.open("index.html", "_self");
         });
 }
