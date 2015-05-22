@@ -87,8 +87,9 @@ function loadChatterBox(){
 
             $.each(entries, function(index, value) {
                 var date = timeConverter(value.TIMESTAMP);
-                var line = "<div id=\"chatentrykopf\">" + value.AUTOR.replace(/\n|<|>|\s/g,'') + " sagt: (" + date + ")</div>";
-                line += "<div id='chatentry'>" + value.TEXT.replace(/\n|<|>|\s/g,'') + "</div> ";
+                var pattern = /<|>/g;
+                var line = "<div id=\"chatentrykopf\">" + value.AUTOR.replace(pattern,'') + " sagt: (" + date + ")</div>";
+                line += "<div id='chatentry'>" + value.TEXT.replace(pattern,'') + "</div> ";
                 chatterboxtext += line;
             });
 
