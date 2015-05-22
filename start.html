@@ -8,7 +8,7 @@
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <script src="js/portal.js"></script>
 </head>
-<body>
+<body onload="loadPageStart()">
 <div id="headline">Lan Portal 2.0</div>
 <div id="loginbox" title="abmelden"></div>
 <div id="lankopf">Die n&auml;chste Lan:
@@ -19,7 +19,7 @@
     <div id="lanbeschreibung"></div>
 </div>
 <div id="chatterbox">
-    <div id="chatterboxheader"><input id='chattext' size='101'> <input type='button' id='chatsend' value='send'></div>
+    <div id="chatterboxheader"><input id='chattext' size='101'> <input type='button' id='chatsend' value='send'> <input type="button" id='chatreload' value='reload'> </div>
     <div id="chatterboxcontent"></div>
 </div>
 </body>

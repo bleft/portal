@@ -5,9 +5,15 @@
 
 function startPage(){
     isLoggedIn();
+
+}
+
+function loadPageStart(){
+
     printLanBox();
     enableChatterBox();
     loadChatterBox();
+
 }
 
 
@@ -57,12 +63,15 @@ function printLanBox(){
 
 function enableChatterBox(){
     $('#chatsend').click(chatterBoxInsertEntry);
+    $('#chatreload').click(loadChatterBox);
 }
 
 function chatterBoxInsertEntry(){
     var postdata = {};
-    postdata.text = $("#chattext").val();
-    $.post('ajax/insertchatentry.php',JSON.stringify(postdata), null, 'json' )
+    var text = encodeURI($("#chattext").val());
+    postdata.text = text.replace(/\?/g,'&#63;');
+
+    $.post('ajax/insertchatentry.php', JSON.stringify(postdata), null, 'json' )
         .done(function (result) {
             $("#chattext").val("");
             loadChatterBox();
@@ -87,9 +96,10 @@ function loadChatterBox(){
 
             $.each(entries, function(index, value) {
                 var date = timeConverter(value.TIMESTAMP);
+                var text = decodeURI(value.TEXT);
                 var pattern = /<|>/g;
                 var line = "<div id=\"chatentrykopf\">" + value.AUTOR.replace(pattern,'') + " sagt: (" + date + ")</div>";
-                line += "<div id='chatentry'>" + value.TEXT.replace(pattern,'') + "</div> ";
+                line += "<div id='chatentry'>" + text + "</div> ";
                 chatterboxtext += line;
             });
 
