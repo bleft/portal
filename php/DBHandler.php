@@ -9,7 +9,7 @@
 require_once "Config.php";
 require_once "Mitglied.php";
 require_once "Lanpartie.php";
-
+require_once "ChatEntry.php";
 
 class DBHandler {
     /** @var mysqli */
@@ -89,5 +89,23 @@ class DBHandler {
     }
 
 
+    public function insertChatEntry(ChatEntry $entry){
+        $stmt = $this->mysqli->prepare("INSERT INTO `CHATTERBOX` (`AUTOR`, `TIMESTAMP`, `TEXT`) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $entry->AUTOR, $entry->TIMESTAMP, $entry->TEXT);
+        $stmt->execute();
+        return $stmt->errno;
+
+    }
+
+
+    public function chatEntries(){
+        $query = "SELECT `id`, `AUTOR`, `TEXT`, `TIMESTAMP` FROM `CHATTERBOX` ORDER BY `id` DESC";
+        $result = $this->mysqli->query($query);
+        $entries  = array();
+        while ($obj = $result->fetch_object("ChatEntry")){
+            $entries[] = $obj;
+        }
+        return $entries;
+    }
 
 } 
