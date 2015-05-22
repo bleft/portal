@@ -47,7 +47,7 @@ function printLanBox(){
                 $("#lantitel")[0].innerHTML =  lan.BEZEICHNER;
                 $("#lanveranstalter")[0].innerHTML =  "bei " + lan.VERANSTALTER;
                 $("#lanbeschreibung")[0].innerHTML =  lan.BESCHREIBUNG;
-                $("#lanbanner")[0].innerHTML = "<img src=\"" + lan.BANNERLINK + "\" alt=\"Banner\" width=\"85%\">";
+                $("#lanbanner")[0].innerHTML = "<img src=\"" + lan.BANNERLINK + "\" alt=\"Banner\">";
                 var mapLink = "<a href=\"" + lan.MAPLINK + "\"> schau wo auf: GOOGLE MAPS </a>";
                 $("#lanadresse")[0].innerHTML = lan.STREET + "<br>" + lan.ZIPCODE + " " + lan.CITY + "<br>" + mapLink;
             }
