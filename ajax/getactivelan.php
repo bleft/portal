@@ -3,39 +3,22 @@
  * Created by PhpStorm.
  * User: sven.bautz
  * Date: 22.05.15
- * Time: 14:09
+ * Time: 11:16
  */
-include_once "../php/DBHandler.php";
-include_once "../php/ChatEntry.php";
-
-
+include_once("../php/DBHandler.php");
 
 session_start();
-$autor = "";
-$err = 0;
 
 if(!isset($_SESSION['loggedIn']))
 {
+    $result = false;
+    header("../index.html");
     exit;
-
-} else {
-    $autor = $_SESSION['memberName'];
 }
 
-$entityBody = file_get_contents('php://input');
-$var = json_decode($entityBody, true);
-$timestamp = time();
-$text = $var["text"];
-
-
 $db = new DBHandler();
-$entry = new ChatEntry();
-$entry->AUTOR = $autor;
-$entry->TEXT = $text;
-$entry->TIMESTAMP = $timestamp;
+$result = $db->aktiveLan();
 
-$err = $db->insertChatEntry($entry);
-$result = "";
 
 $json = '{"result":'.json_encode($result).', "error":'.json_encode($err).'}';
 sendJson($json);
