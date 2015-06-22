@@ -121,6 +121,11 @@ a:hover {
     font-size: 0.6em;
 }
 
+#teilnehmen {
+    float: right;
+    padding: 5px;
+}
+
 #lanbanner {
 }
 

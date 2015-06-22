@@ -56,10 +56,52 @@ function printLanBox(){
                 $("#lanbanner")[0].innerHTML = "<img src=\"" + lan.BANNERLINK + "\" alt=\"Banner\">";
                 var mapLink = "<a href=\"" + lan.MAPLINK + "\"> schau wo auf: GOOGLE MAPS </a>";
                 $("#lanadresse")[0].innerHTML = lan.STREET + "<br>" + lan.ZIPCODE + " " + lan.CITY + "<br>" + mapLink;
+                setTeilnehmenButton();
             }
 
         })
 }
+
+function setTeilnehmenButton(){
+
+    var teilnehmenButton = $("#teilnehmen")[0];
+
+    $.post('ajax/isAttendie.php', null, null, 'json')
+        .done(function (result) {
+            if (!result.result){
+                teilnehmenButton.innerHTML = "<input type='button' id='subscripeButton' value='Teilnehmen'>";
+                $('#subscripeButton').click(teilnehmen);
+            } else {
+                teilnehmenButton.innerHTML = "<input type='button' id='subscripeButton' value='Absagen!'>";
+                $('#subscripeButton').click(absagen);
+            }
+        })
+        .fail(function (err) {
+
+        })
+}
+
+function teilnehmen(){
+    $.post('ajax/subscripeToActiveLan.php', null, null, 'json' )
+        .done(function (result) {
+            setTeilnehmenButton();
+        })
+        .fail(function (err){
+            //
+        });
+}
+
+
+function absagen(){
+    $.post('ajax/removeFromActiveLan.php', null, null, 'json' )
+        .done(function (result) {
+            setTeilnehmenButton();
+        })
+        .fail(function (err){
+            //
+        });
+}
+
 
 function enableChatterBox(){
     $('#chatsend').click(chatterBoxInsertEntry);
@@ -108,7 +150,6 @@ function loadChatterBox(){
 
     });
 }
-
 
 
 function timeConverter(UNIX_timestamp){

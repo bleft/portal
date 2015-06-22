@@ -8,6 +8,7 @@
 
 class Lanpartie {
 
+    public $ID;
     public $BEZEICHNER;
     public $VERANSTALTER;
     public $BESCHREIBUNG;

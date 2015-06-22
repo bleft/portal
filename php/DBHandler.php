@@ -70,7 +70,7 @@ class DBHandler {
     }
 
     public function aktiveLan(){
-        $query = "SELECT `id`, `BEZEICHNER`, `VERANSTALTER`, `BESCHREIBUNG`, `STREET`, `ZIPCODE`, `CITY`, `MAPLINK`, `BANNERLINK` FROM `LANPARTIES` WHERE `AKTIV` = 1";
+        $query = "SELECT `id` as ID, `BEZEICHNER`, `VERANSTALTER`, `BESCHREIBUNG`, `STREET`, `ZIPCODE`, `CITY`, `MAPLINK`, `BANNERLINK` FROM `LANPARTIES` WHERE `AKTIV` = 1";
         $result = $this->mysqli->query($query, MYSQLI_STORE_RESULT);
         if ($result->num_rows != 1){
             return false;
@@ -108,4 +108,32 @@ class DBHandler {
         return $entries;
     }
 
+
+    public function isAttendie($username) {
+        $lan = $this->aktiveLan();
+        $stmt = $this->mysqli->prepare("SELECT USERNAME FROM TEILNEHMER WHERE LAN_ID = ? AND USERNAME = ?");
+        $stmt->bind_param("is",$lan->ID, $username);
+        $stmt->execute();
+        if ($stmt->get_result()->num_rows > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function subscripeToActiveLan($user){
+        $stmt = $this->mysqli->prepare("INSERT INTO TEILNEHMER (LAN_ID, USERNAME) VALUES (?,?)");
+        $lan = $this->aktiveLan();
+        $stmt->bind_param("is", $lan->ID, $user);
+        $stmt->execute();
+        return $stmt->errno;
+    }
+
+    public function removeFromActiveLan($user){
+        $stmt = $this->mysqli->prepare("DELETE FROM TEILNEHMER WHERE LAN_ID = ? AND USERNAME = ?");
+        $lan = $this->aktiveLan();
+        $stmt->bind_param("is", $lan->ID, $user);
+        $stmt->execute();
+        return $stmt->errno;
+    }
 } 
