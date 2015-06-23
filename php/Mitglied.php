@@ -12,4 +12,5 @@ class Mitglied {
     public $USERNAME;
     public $PASSWORT;
     public $EMAIL;
+    public $DABEI;
 } 

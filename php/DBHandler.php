@@ -136,4 +136,18 @@ class DBHandler {
         $stmt->execute();
         return $stmt->errno;
     }
+
+    public function allMemberNames(){
+        $stmt = $this->mysqli->prepare("SELECT USERNAME FROM MITGLIEDER");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $members = array();
+        while ($obj = $result->fetch_object("Mitglied")){
+            $obj->DABEI = $this->isAttendie($obj->USERNAME);
+            $members[] = $obj;
+        }
+
+        return $members;
+    }
+
 } 

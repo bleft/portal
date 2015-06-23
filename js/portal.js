@@ -13,14 +13,12 @@ function loadPageStart(){
     printLanBox();
     enableChatterBox();
     loadChatterBox();
-
+    loadMembers();
 }
 
 
 function logout(){
-
     window.open("php/logout.php");
-
 }
 
 
@@ -149,6 +147,28 @@ function loadChatterBox(){
         }
 
     });
+}
+
+
+function loadMembers(){
+    $.post('ajax/allMemberNames.php', null, null, 'json')
+        .done(function (result){
+            var entries = result.result;
+            if (entries){
+                var usertext = "<h3>Mitglieders:</h3>";
+
+                $.each(entries, function(index, value){
+                    var name = value.USERNAME;
+                    usertext += name;
+                    if (value.DABEI){
+                        usertext += '<img src="img/thumbup.png" alt="nimmt teil!">';
+                    }
+                    usertext += " | ";
+
+                });
+                $("#memberList")[0].innerHTML = usertext;
+            }
+        });
 }
 
 
