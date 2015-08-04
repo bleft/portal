@@ -151,3 +151,10 @@ a:hover {
     padding: 10px;
     font-family: 'Kalam', cursive;
 }
+
+#countbox {
+    width: 200px;
+    padding: 5px;
+    font-size: 0.6em;
+    background-color: yellow;
+}

@@ -55,6 +55,7 @@ function printLanBox(){
                 var mapLink = "<a href=\"" + lan.MAPLINK + "\"> schau wo auf: GOOGLE MAPS </a>";
                 $("#lanadresse")[0].innerHTML = lan.STREET + "<br>" + lan.ZIPCODE + " " + lan.CITY + "<br>" + mapLink;
                 setTeilnehmenButton();
+                showCounter(lan.BEGINN);
             }
 
         })
@@ -171,6 +172,17 @@ function loadMembers(){
         });
 }
 
+function showCounter(beginn){
+    var now = Date.now();
+    var dateParts = beginn.split("-");
+    var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
+    var start = jsDate.getTime();
+    var days = days_between(start, now);
+    if (days > 0) {
+        var countbox =  $('#countbox')[0];
+        countbox.innerHTML = "Tage bis zur LAN: " + days;
+    }
+}
 
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp*1000);
@@ -183,6 +195,20 @@ function timeConverter(UNIX_timestamp){
     var sec = a.getSeconds();
     var time = date + ',' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     return time;
+}
+
+function days_between(date1, date2) {
+
+    // The number of milliseconds in one day
+    var ONE_DAY = 1000 * 60 * 60 * 24;
+
+    // Calculate the difference in milliseconds
+    var difference_ms = Math.abs(date1 - date2);
+
+    // Convert back to days and return
+    var tage = Math.round(difference_ms/ONE_DAY);
+    return tage;
+
 }
 
 $(document).ready(startPage)

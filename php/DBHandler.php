@@ -70,7 +70,7 @@ class DBHandler {
     }
 
     public function aktiveLan(){
-        $query = "SELECT `id` as ID, `BEZEICHNER`, `VERANSTALTER`, `BESCHREIBUNG`, `STREET`, `ZIPCODE`, `CITY`, `MAPLINK`, `BANNERLINK` FROM `LANPARTIES` WHERE `AKTIV` = 1";
+        $query = "SELECT `id` as ID, `BEZEICHNER`, `VERANSTALTER`, `BESCHREIBUNG`, `STREET`, `ZIPCODE`, `CITY`, `MAPLINK`, `BANNERLINK`, `BEGINN`, `ENDE` FROM `LANPARTIES` WHERE `AKTIV` = 1";
         $result = $this->mysqli->query($query, MYSQLI_STORE_RESULT);
         if ($result->num_rows != 1){
             return false;

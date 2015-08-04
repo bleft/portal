@@ -18,4 +18,6 @@ class Lanpartie {
     public $MAPLINK;
     public $BANNERLINK;
     public $AKTIV;
+    public $BEGINN;
+    public $ENDE;
 } 
