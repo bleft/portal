@@ -177,10 +177,14 @@ function showCounter(beginn){
     var dateParts = beginn.split("-");
     var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
     var start = jsDate.getTime();
-    var days = days_between(start, now);
+    var days = days_between(start, now) + 1;
+    var countbox =  $('#countbox')[0];
     if (days > 0) {
-        var countbox =  $('#countbox')[0];
         countbox.innerHTML = "Tage bis zur LAN: " + days;
+    } else if (days > -2){
+    	countbox.innerHTML = "KOMM SCHNELL!!"
+    } else {
+    	countbox.innerHTML = "Aus und vorbei!"
     }
 }
 
